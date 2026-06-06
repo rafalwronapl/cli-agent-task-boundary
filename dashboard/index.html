@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Task Boundary FinOps</title>
+  <link rel="stylesheet" href="/assets/styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.7/dist/chart.umd.min.js" defer></script>
+  <script src="/assets/app.js" defer></script>
+</head>
+<body>
+  <header class="header">
+    <div>
+      <p class="eyebrow">LLM engineering cost control</p>
+      <h1>Task Boundary FinOps</h1>
+      <p class="subhead">Anonymous session metrics only. No prompts, responses, file paths, or project names leave a workstation.</p>
+    </div>
+    <div class="controls">
+      <label>Period
+        <select id="days">
+          <option value="7">7 days</option>
+          <option value="30" selected>30 days</option>
+          <option value="90">90 days</option>
+        </select>
+      </label>
+      <label>Team
+        <input id="team" placeholder="all teams">
+      </label>
+      <label>API token
+        <input id="api-token" type="password" autocomplete="off" placeholder="optional">
+      </label>
+      <button id="refresh">Refresh</button>
+    </div>
+  </header>
+  <main>
+    <p id="status" class="status">Loading metrics...</p>
+    <section class="cards">
+      <article><span>Current session cost</span><strong id="cost">-</strong></article>
+      <article><span>Sessions</span><strong id="sessions">-</strong></article>
+      <article><span>Active agents</span><strong id="agents">-</strong></article>
+      <article class="warning"><span>Potential waste</span><strong id="leaky-cost">-</strong></article>
+      <article class="warning"><span>Boundary sessions</span><strong id="leaky">-</strong></article>
+      <article><span>Billed tokens</span><strong id="tokens">-</strong></article>
+    </section>
+    <section class="charts">
+      <article class="panel"><h2>Cost trend</h2><canvas id="trend-chart"></canvas></article>
+      <article class="panel"><h2>Session decisions</h2><canvas id="decision-chart"></canvas></article>
+    </section>
+    <section class="panels">
+      <article class="panel">
+        <h2>Cost by team</h2>
+        <table>
+          <thead><tr><th>Team</th><th>Sessions</th><th>Boundaries</th><th>Cost</th></tr></thead>
+          <tbody id="teams-body"></tbody>
+        </table>
+      </article>
+      <article class="panel wide">
+        <h2>Savings opportunities</h2>
+        <p class="explain">Sessions marked <code>new_task</code> are listed first: retained prior context is the most direct savings target.</p>
+        <table>
+          <thead><tr><th>Session</th><th>Team</th><th>Source</th><th>Verdict</th><th>Context</th><th>Cost</th><th>Seen</th></tr></thead>
+          <tbody id="sessions-body"></tbody>
+        </table>
+      </article>
+    </section>
+  </main>
+</body>
+</html>

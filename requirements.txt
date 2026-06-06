@@ -1,0 +1,19 @@
+# Base — Layer 1 + GUI (Tkinter is in stdlib).
+# No external dependencies required.
+
+# Layer 2 — semantic drift detection (optional, ~600 MB total install).
+# Comment out if you don't want L2.
+sentence-transformers>=2.7.0
+numpy>=1.24.0
+# torch is pulled in transitively by sentence-transformers; if you want a
+# specific CPU-only build, pin it explicitly:
+# torch>=2.2.0+cpu --extra-index-url https://download.pytorch.org/whl/cpu
+
+# Layer 3 — DeepSeek LLM verdict via OpenRouter (optional).
+# Uses only urllib from stdlib — no extra deps. Just set OPENROUTER_API_KEY
+# in .env.
+
+# FinOps server and dashboard API.
+fastapi>=0.110.0
+uvicorn[standard]>=0.29.0
+duckdb>=1.0.0
