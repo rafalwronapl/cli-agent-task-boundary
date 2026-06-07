@@ -44,6 +44,7 @@ The FinOps dashboard below is shown with generated demo metrics. Real reporter
 uploads use anonymous numeric session data only.
 
 ![Task Boundary FinOps dashboard demo](docs/screenshots/finops-dashboard-demo.png)
+![Empty dashboard state](docs/screenshots/finops-dashboard-empty-state.png)
 
 ## What It Does
 
