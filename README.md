@@ -13,6 +13,21 @@ task, so it is time to compact, reset, or start a fresh session?
 The project is positioned as a multi-CLI agent-session boundary detector for
 Claude Code, OpenAI Codex CLI, Gemini CLI, and similar local assistant tools.
 
+## Run In 60 Seconds
+
+```bash
+python -m pip install -e ".[test,server]"
+python -m server
+```
+
+In a second terminal:
+
+```bash
+python reporter.py --team engineering
+```
+
+Open `http://127.0.0.1:8787` to view the local dashboard.
+
 ## Why This Matters
 
 Long assistant sessions drift: the user asks a new question, the context still
